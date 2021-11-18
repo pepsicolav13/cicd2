@@ -9,11 +9,16 @@ jobs:
     - name: checkout source code
       uses: actions/checkout@main
 
-    - name: Print Env
-      run: printenv
+    - name: Build the Docker image
+      run: docker build . -t $GITHUB_ACTOR/nginx:$GITHUB_RUN_NUMBER
 
-    - name: do ls
-      run: ls -alh
+    - name: Test image
+      run: echo "Run image test!"
 
-    - name: current dir
-      run: pwd
+    - name: login
+      run: docker login -u $GITHUB_ACTOR -p $PASSWORD
+      env:
+        PASSWORD: ${{ secrets.PASSWORD }}
+
+    - name: push
+      run: docker push $GITHUB_ACTOR/nginx:$GITHUB_RUN_NUMBER
