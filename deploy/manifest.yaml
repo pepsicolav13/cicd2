@@ -13,7 +13,7 @@ spec:
         run: mynginx
     spec:
       containers:
-      - image: <DOCKER_HUB_IMAGE>
+      - image: pepsicolav13/nginx:3
         name: mynginx
 ---
 apiVersion: v1
