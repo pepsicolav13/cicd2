@@ -14,3 +14,6 @@ jobs:
 
     - name: do ls
       run: ls -alh
+
+    - name: current dir
+      run: pwd
